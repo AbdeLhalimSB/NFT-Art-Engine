@@ -1,0 +1,10 @@
+C:\Users\sahba\OneDrive\Desktop\Working_Onit\NFT-Art-Engine\NFT-Art-Engine\bin\Debug\NFT-Art-Engine.exe.config
+C:\Users\sahba\OneDrive\Desktop\Working_Onit\NFT-Art-Engine\NFT-Art-Engine\bin\Debug\NFT-Art-Engine.exe
+C:\Users\sahba\OneDrive\Desktop\Working_Onit\NFT-Art-Engine\NFT-Art-Engine\bin\Debug\NFT-Art-Engine.pdb
+C:\Users\sahba\OneDrive\Desktop\Working_Onit\NFT-Art-Engine\NFT-Art-Engine\obj\Debug\NFT-Art-Engine.csproj.AssemblyReference.cache
+C:\Users\sahba\OneDrive\Desktop\Working_Onit\NFT-Art-Engine\NFT-Art-Engine\obj\Debug\NFT_Art_Engine.Form1.resources
+C:\Users\sahba\OneDrive\Desktop\Working_Onit\NFT-Art-Engine\NFT-Art-Engine\obj\Debug\NFT_Art_Engine.Properties.Resources.resources
+C:\Users\sahba\OneDrive\Desktop\Working_Onit\NFT-Art-Engine\NFT-Art-Engine\obj\Debug\NFT-Art-Engine.csproj.GenerateResource.cache
+C:\Users\sahba\OneDrive\Desktop\Working_Onit\NFT-Art-Engine\NFT-Art-Engine\obj\Debug\NFT-Art-Engine.csproj.CoreCompileInputs.cache
+C:\Users\sahba\OneDrive\Desktop\Working_Onit\NFT-Art-Engine\NFT-Art-Engine\obj\Debug\NFT-Art-Engine.exe
+C:\Users\sahba\OneDrive\Desktop\Working_Onit\NFT-Art-Engine\NFT-Art-Engine\obj\Debug\NFT-Art-Engine.pdb
