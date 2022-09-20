@@ -23,12 +23,14 @@ namespace NFT_Art_Engine
 
         // Globale Dec --------------------------------------------------------------------------
         FolderBrowserDialog layersfolder = new FolderBrowserDialog();
+        FolderBrowserDialog output = new FolderBrowserDialog();
         string[] layers;
-        //string[] layers_details;
         string[] target;
         List<string> elemnts = new List<string>();
         string krfhada;
         List<string> DNA = new List<string>();
+        List<string> MetaDNA = new List<string>();
+        List<string> Atributes = new List<string>();
         //---------------------------------------------------------------------------------------
 
 
@@ -51,6 +53,8 @@ namespace NFT_Art_Engine
         private void Start_Click(object sender, EventArgs e)
         {
             string dna_string = "";
+            string json_atre = "";
+            string latesdna = "";
             for (int nft = 0; nft < ntf_count.Value; nft++)
             {
                 nftstart:
@@ -59,6 +63,7 @@ namespace NFT_Art_Engine
                     target = Directory.GetFiles(layers[i]);
                     krfhada = target[randomer(0,target.Length)];
                     elemnts.Add(krfhada);
+                    Atributes.Add(krfhada);
                 }
                 Image imageBackground = Image.FromFile(elemnts[0]);
 
@@ -76,39 +81,87 @@ namespace NFT_Art_Engine
                     dna_string += elemnts[sc];
                 }
                 
-                if (DNA.Contains(dna_string))
+                if (DNA.Contains(dna_string) || MetaDNA.Contains(latesdna))
                 {
                     logs.Text += "\n DNA Exist !!";
                     elemnts.Clear();
                     dna_string = "";
+                    latesdna = "";
+                    Atributes.Clear();
                     goto nftstart;
                 }
                 else
                 {
-                    logs.Text += "\n DNA : "+dna_string;
-                    img.Save("C:/Users/sahba/OneDrive/Desktop/r/" + (nft + 1) + ".png", ImageFormat.Png);
+                    logs.Text += "\n DNA is created";
+                    MetaDNA.Add(DNA_Generator());
+                    latesdna = MetaDNA[nft];
+                    logs.Text += "\n" + latesdna;
+                    img.Save(output.SelectedPath+"/" + (nft + 1) + ".png", ImageFormat.Png);
                     DNA.Add(dna_string);
+                    string layer="";
+                    string atree = "";
+                    for (int c = 0; c < Atributes.Count; c++)
+                    {
+                        Atributes[c] = Path.GetFileName(Atributes[c]);
+                        layer = Path.GetFileName(layers[c]);
+                        //Atributes[c] = Atributes[c].Substring(0, Atributes[c].IndexOf('.'));
+                        atree = Atributes[c].Substring(0, Atributes[c].IndexOf('.'));
+                        if (c == Atributes.Count-1)
+                        {
+                            json_atre += "\t{ \"trait_type\":  \"" + layer + "\", \"value\": \"" + atree + "\" }\n";
+                        }
+                        else
+                        {
+                            json_atre += "\t{ \"trait_type\":  \"" + layer + "\", \"value\": \"" + atree + "\" },\n";
+                        }
+                    }
+                    Atributes.Clear();
+                    string json = "{\n \"dna\": \""+latesdna+ "\" ,\n \"name\": \"" + project_name.Text + "" +(nft+1)+ "\", \n \"description\": \""+desci.Text+"\",\n \"image\": \""+image_link.Text+" \",\n \"edition\": \"1\",\n \"attributes\": [\n"+json_atre+"],\n \"compiler\": \"AbdeLhalim Art Engine\"\n }";
+                    File.WriteAllText(output.SelectedPath + "/" + (nft+1)+".json", json);
+                    json_atre = "";
                 }
-
                 elemnts.Clear();
                 dna_string = "";
+                Atributes.Clear();
             }
-
-            logs.Text += "\n" + elemnts.Count;
-            logs.Text += "\n" + DNA.Count;
+            DNA.Clear();
+            MetaDNA.Clear();
         }
 
 
 
+        private void output_path_Click(object sender, EventArgs e)
+        {
+            output.ShowNewFolderButton = true;
+            DialogResult result = output.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                logs.Text += output.SelectedPath;
+            }
+        }
+
         // Functions --------------------------------------------------------------------------
-        private int randomer(int start,int finish)
+        private int randomer(int start, int finish)
         {
             Random rnd = new Random();
-            int num = rnd.Next(start,finish);
+            int num = rnd.Next(start, finish);
             return num;
         }
 
+        public static string DNA_Generator()
+        {
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+            var stringChars = new char[40];
+            var random = new Random();
 
+            for (int i = 0; i < 40; i++)
+            {
+                stringChars[i] = chars[random.Next(chars.Length)];
+            }
+
+            var finalString = new String(stringChars);
+            return finalString;
+        }
 
     }
 }
