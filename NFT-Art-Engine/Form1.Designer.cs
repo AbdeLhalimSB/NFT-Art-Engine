@@ -47,6 +47,7 @@ namespace NFT_Art_Engine
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
+            this.progress = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.ntf_count)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -124,10 +125,10 @@ namespace NFT_Art_Engine
             // 
             // logs
             // 
-            this.logs.Location = new System.Drawing.Point(572, 68);
+            this.logs.Location = new System.Drawing.Point(561, 65);
             this.logs.Name = "logs";
             this.logs.ReadOnly = true;
-            this.logs.Size = new System.Drawing.Size(323, 393);
+            this.logs.Size = new System.Drawing.Size(323, 360);
             this.logs.TabIndex = 5;
             this.logs.Text = "";
             // 
@@ -136,7 +137,7 @@ namespace NFT_Art_Engine
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("OCR A Extended", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(568, 36);
+            this.label2.Location = new System.Drawing.Point(557, 33);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(88, 23);
             this.label2.TabIndex = 6;
@@ -209,6 +210,7 @@ namespace NFT_Art_Engine
             // 
             // pictureBox2
             // 
+            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(876, 515);
             this.pictureBox2.Name = "pictureBox2";
@@ -216,11 +218,12 @@ namespace NFT_Art_Engine
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 15;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Green;
-            this.panel1.Location = new System.Drawing.Point(494, 12);
+            this.panel1.Location = new System.Drawing.Point(484, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1, 577);
             this.panel1.TabIndex = 16;
@@ -237,6 +240,15 @@ namespace NFT_Art_Engine
             this.button1.TabIndex = 17;
             this.button1.Text = "How to use";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // progress
+            // 
+            this.progress.Location = new System.Drawing.Point(561, 432);
+            this.progress.Name = "progress";
+            this.progress.Size = new System.Drawing.Size(323, 12);
+            this.progress.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progress.TabIndex = 18;
             // 
             // Form1
             // 
@@ -244,6 +256,7 @@ namespace NFT_Art_Engine
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(16)))), ((int)(((byte)(16)))));
             this.ClientSize = new System.Drawing.Size(950, 601);
+            this.Controls.Add(this.progress);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox2);
@@ -294,6 +307,7 @@ namespace NFT_Art_Engine
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ProgressBar progress;
     }
 }
 

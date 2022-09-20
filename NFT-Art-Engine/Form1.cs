@@ -1,16 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Drawing.Drawing2D;
-using System.Drawing.Text;
+
 
 namespace NFT_Art_Engine
 {
@@ -52,6 +46,7 @@ namespace NFT_Art_Engine
 
         private void Start_Click(object sender, EventArgs e)
         {
+            progress.MarqueeAnimationSpeed=50;
             string dna_string = "";
             string json_atre = "";
             string latesdna = "";
@@ -83,7 +78,7 @@ namespace NFT_Art_Engine
                 
                 if (DNA.Contains(dna_string) || MetaDNA.Contains(latesdna))
                 {
-                    logs.Text += "\n DNA Exist !!";
+                    //logs.Text += "\n DNA Exist !!";
                     elemnts.Clear();
                     dna_string = "";
                     latesdna = "";
@@ -116,8 +111,8 @@ namespace NFT_Art_Engine
                         }
                     }
                     Atributes.Clear();
-                    string json = "{\n \"dna\": \""+latesdna+ "\" ,\n \"name\": \"" + project_name.Text + "" +(nft+1)+ "\", \n \"description\": \""+desci.Text+"\",\n \"image\": \""+image_link.Text+" \",\n \"edition\": \"1\",\n \"attributes\": [\n"+json_atre+"],\n \"compiler\": \"AbdeLhalim Art Engine\"\n }";
-                    File.WriteAllText(output.SelectedPath + "/" + (nft+1)+".json", json);
+                    string json = "{\n \"dna\": \""+latesdna+ "\" ,\n \"name\": \"" + project_name.Text + "\", \n \"description\": \""+desci.Text+"\",\n \"image\": \""+image_link.Text+" \",\n \"edition\": \"1\",\n \"attributes\": [\n"+json_atre+"],\n \"compiler\": \"AbdeLhalim Art Engine\"\n }";
+                    File.WriteAllText(@""+output.SelectedPath + "/Metadata/" + (nft+1)+".json", json);
                     json_atre = "";
                 }
                 elemnts.Clear();
@@ -126,6 +121,7 @@ namespace NFT_Art_Engine
             }
             DNA.Clear();
             MetaDNA.Clear();
+            progress.MarqueeAnimationSpeed = 10;
         }
 
 
@@ -136,8 +132,19 @@ namespace NFT_Art_Engine
             DialogResult result = output.ShowDialog();
             if (result == DialogResult.OK)
             {
-                logs.Text += output.SelectedPath;
+                logs.Text += "\n"+output.SelectedPath;
+                Directory.CreateDirectory(output.SelectedPath+"/Metadata/");
             }
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/AbdeLhalimSB");
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("How to use : \n1.Load your layers folder\n2.Select your output folder\n3.Input project inforamtions\n4.Start & Enjoy :)","Using informations",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
 
         // Functions --------------------------------------------------------------------------
@@ -163,5 +170,6 @@ namespace NFT_Art_Engine
             return finalString;
         }
 
+        
     }
 }

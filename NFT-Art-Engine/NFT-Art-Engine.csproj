@@ -79,5 +79,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="img\8.png" />
+    <Content Include="img\layers.PNG" />
+    <Content Include="img\Metadata.PNG" />
+    <Content Include="img\output.PNG" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
